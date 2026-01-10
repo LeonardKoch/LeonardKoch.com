@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom CSS Variables */
+:root {
+  --blog-bg: #f8f9fb;
+  --text-dark: #1a1a1a;
+  --text-body: #374151;
+  --dot-base: #e5e7eb;
+  --dot-base-faint: #f0f0f0;
+}
+
+body {
+  @apply m-0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--blog-bg);
+  color: var(--text-body);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Font utilities */
+.font-display {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-cursive {
+  font-family: 'Caveat', cursive;
+}
+
+/* Dot paper pattern - accepts --dot-color custom property */
+.dot-paper {
+  --dot-size: 1.5px;
+  --dot-spacing: 20px;
+  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 30%, var(--dot-base));
+
+  background-image: radial-gradient(
+    circle,
+    var(--dot-color-mixed) var(--dot-size),
+    transparent var(--dot-size)
+  );
+  background-size: var(--dot-spacing) var(--dot-spacing);
+}
+
+/* Gradient mask for fade effect: full opacity top-left to low opacity bottom-right */
+.dot-paper-gradient {
+  mask-image: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+/* Below title area - very low opacity dots */
+.dot-paper-faint {
+  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 10%, var(--dot-base-faint));
+}
+
+/* Prose styling for post content */
+.prose-blog {
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+.prose-blog h1,
+.prose-blog h2,
+.prose-blog h3,
+.prose-blog h4 {
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose-blog h1 { font-size: 2rem; }
+.prose-blog h2 { font-size: 1.5rem; }
+.prose-blog h3 { font-size: 1.25rem; }
+.prose-blog h4 { font-size: 1.125rem; }
+
+.prose-blog p {
+  margin-bottom: 1.25em;
+}
+
+.prose-blog a {
+  color: var(--text-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-blog a:hover {
+  opacity: 0.7;
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.prose-blog li {
+  margin-bottom: 0.5em;
+}
+
+.prose-blog blockquote {
+  border-left: 3px solid var(--dot-base);
+  padding-left: 1em;
+  margin-left: 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+.prose-blog pre {
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.25em;
+}
+
+.prose-blog code {
+  font-size: 0.875em;
+}
+
+.prose-blog :not(pre) > code {
+  background-color: #f1f5f9;
+  padding: 0.125em 0.375em;
+  border-radius: 0.25rem;
+  color: var(--text-dark);
+}
+
+.prose-blog img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5em 0;
+}
+
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid var(--dot-base);
+  margin: 2em 0;
+}

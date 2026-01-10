@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Mane - outer layer -->
+  <circle cx="50" cy="50" r="42" fill="#d4a574" opacity="0.3"/>
+  <!-- Mane - middle layer -->
+  <circle cx="50" cy="50" r="36" fill="#c4956a"/>
+  <!-- Mane - inner detail rays -->
+  <g fill="#b8855a" opacity="0.6">
+    <ellipse cx="50" cy="18" rx="8" ry="12"/>
+    <ellipse cx="82" cy="50" rx="12" ry="8"/>
+    <ellipse cx="50" cy="82" rx="8" ry="12"/>
+    <ellipse cx="18" cy="50" rx="12" ry="8"/>
+    <ellipse cx="27" cy="27" rx="9" ry="9" transform="rotate(-45 27 27)"/>
+    <ellipse cx="73" cy="27" rx="9" ry="9" transform="rotate(45 73 27)"/>
+    <ellipse cx="73" cy="73" rx="9" ry="9" transform="rotate(-45 73 73)"/>
+    <ellipse cx="27" cy="73" rx="9" ry="9" transform="rotate(45 27 73)"/>
+  </g>
+  <!-- Face -->
+  <circle cx="50" cy="52" r="24" fill="#f5deb3"/>
+  <!-- Snout area -->
+  <ellipse cx="50" cy="60" rx="12" ry="10" fill="#ffe4c4"/>
+  <!-- Eyes -->
+  <ellipse cx="40" cy="48" rx="4" ry="5" fill="#1a1a1a"/>
+  <ellipse cx="60" cy="48" rx="4" ry="5" fill="#1a1a1a"/>
+  <!-- Eye highlights -->
+  <circle cx="41" cy="46" r="1.5" fill="white"/>
+  <circle cx="61" cy="46" r="1.5" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="58" rx="5" ry="4" fill="#8b6914"/>
+  <!-- Nose highlight -->
+  <ellipse cx="50" cy="56.5" rx="2" ry="1.5" fill="#a07818" opacity="0.6"/>
+  <!-- Mouth -->
+  <path d="M 45 65 Q 50 69 55 65" stroke="#8b6914" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Whisker dots -->
+  <circle cx="38" cy="62" r="1" fill="#c4a66a"/>
+  <circle cx="35" cy="60" r="1" fill="#c4a66a"/>
+  <circle cx="62" cy="62" r="1" fill="#c4a66a"/>
+  <circle cx="65" cy="60" r="1" fill="#c4a66a"/>
+  <!-- Ears -->
+  <ellipse cx="30" cy="35" rx="7" ry="8" fill="#c4956a"/>
+  <ellipse cx="30" cy="35" rx="4" ry="5" fill="#f5deb3"/>
+  <ellipse cx="70" cy="35" rx="7" ry="8" fill="#c4956a"/>
+  <ellipse cx="70" cy="35" rx="4" ry="5" fill="#f5deb3"/>
+</svg>
