@@ -1,8 +1,11 @@
+import { Code } from '../components/Code'
+
 export const meta = {
   slug: 'building-with-tanstack',
   title: 'Building with TanStack Start',
   date: '2026-01-10',
   color: '#10b981',
+  description: 'Why I chose TanStack Start for this blog: file-based routing, end-to-end type safety, and powerful server functions.',
 }
 
 export default function BuildingWithTanStack() {
@@ -18,13 +21,11 @@ export default function BuildingWithTanStack() {
         Routes are defined by the file structure in your <code>src/routes</code>{' '}
         folder. Create a file, and you have a route. It's that simple.
       </p>
-      <pre>
-        <code>{`src/routes/
+      <Code lang="bash">{`src/routes/
 ├── __root.tsx      # Root layout
 ├── index.tsx       # Home page (/)
 └── post/
-    └── $slug.tsx   # Dynamic route (/post/:slug)`}</code>
-      </pre>
+    └── $slug.tsx   # Dynamic route (/post/:slug)`}</Code>
 
       <h2>Type Safety Everywhere</h2>
       <p>
@@ -38,14 +39,12 @@ export default function BuildingWithTanStack() {
         Need to run code on the server? Just use <code>createServerFn</code> and
         call it from your components. No API routes needed for simple operations.
       </p>
-      <pre>
-        <code>{`import { createServerFn } from '@tanstack/react-start'
+      <Code lang="typescript">{`import { createServerFn } from '@tanstack/react-start'
 
 const getData = createServerFn('GET', async () => {
   // This runs on the server
   return { message: 'Hello from the server!' }
-})`}</code>
-      </pre>
+})`}</Code>
 
       <p>
         The combination of these features makes TanStack Start perfect for content

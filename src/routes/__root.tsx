@@ -34,6 +34,12 @@ export const Route = createRootRoute({
         href: '/lion.svg',
         type: 'image/svg+xml',
       },
+      {
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        title: 'LeonardKoch RSS Feed',
+        href: '/rss.xml',
+      },
     ],
   }),
 

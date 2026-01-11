@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun vite dev --port 3000",
-    "build": "bun vite build",
+    "build": "bun scripts/generate-rss.ts && bun vite build",
     "preview": "bun vite preview",
     "test": "vitest run"
   },

@@ -1,8 +1,11 @@
+import { Code } from '../components/Code'
+
 export const meta = {
   slug: 'the-joy-of-bun',
   title: 'The Joy of Bun',
   date: '2026-01-08',
-  color: '#f59e0b',
+  color: '#3a87d1',
+  description: 'Bun is a fast all-in-one JavaScript runtime, package manager, bundler, and test runner. Here\'s why it\'s a game changer.',
 }
 
 export default function TheJoyOfBun() {
@@ -19,26 +22,21 @@ export default function TheJoyOfBun() {
         feels instant. Starting a dev server takes milliseconds. It's the kind
         of speed that changes how you work.
       </p>
-      <pre>
-        <code>{`# Install dependencies
+      <Code lang="bash">{`# Install dependencies
 bun install  # ~500ms vs npm's 10+ seconds
 
 # Run scripts
-bun run dev  # Instant startup`}</code>
-      </pre>
+bun run dev  # Instant startup`}</Code>
 
       <h2>Native TypeScript Support</h2>
       <p>
         No configuration needed. Just write TypeScript and run it directly:
       </p>
-      <pre>
-        <code>{`// script.ts
+      <Code lang="typescript">{`// script.ts
 const greeting: string = "Hello, Bun!"
-console.log(greeting)
-
-// Run it directly
-$ bun script.ts`}</code>
-      </pre>
+console.log(greeting)`}</Code>
+      <Code lang="bash">{`# Run it directly
+$ bun script.ts`}</Code>
 
       <h2>Drop-in Node.js Replacement</h2>
       <p>
@@ -51,13 +49,11 @@ $ bun script.ts`}</code>
       <p>
         Bun includes a test runner that's compatible with Jest's API:
       </p>
-      <pre>
-        <code>{`import { test, expect } from 'bun:test'
+      <Code lang="typescript">{`import { test, expect } from 'bun:test'
 
 test('addition', () => {
   expect(2 + 2).toBe(4)
-})`}</code>
-      </pre>
+})`}</Code>
 
       <p>
         If you haven't tried Bun yet, give it a shot. The speed alone makes it

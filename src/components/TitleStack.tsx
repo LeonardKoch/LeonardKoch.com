@@ -5,29 +5,31 @@ interface TitleStackProps {
 
 export function TitleStack({ title, color }: TitleStackProps) {
   return (
-    <div className="relative inline-block">
-      {/* Layer 2: Most blur, lowest opacity - offset slightly */}
+    <div className="relative inline-block px-[30px]">
+      {/* Layer 2: Outer echo - more blur, lower opacity, scaled up */}
       <span
-        className="absolute inset-0 font-cursive text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
+        className="absolute inset-0 font-display text-4xl md:text-5xl lg:text-6xl font-bold whitespace-nowrap pointer-events-none select-none"
         style={{
           color,
-          filter: 'blur(4px)',
-          opacity: 0.25,
-          transform: 'translate(3px, 3px)',
+          filter: 'blur(6px)',
+          opacity: 0.15,
+          transform: 'scale(1.08)',
+          transformOrigin: 'left center',
         }}
         aria-hidden="true"
       >
         {title}
       </span>
 
-      {/* Layer 1: Medium blur - offset slightly less */}
+      {/* Layer 1: Inner echo - light blur, slightly more visible */}
       <span
-        className="absolute inset-0 font-cursive text-5xl md:text-6xl lg:text-7xl whitespace-nowrap"
+        className="absolute inset-0 font-display text-4xl md:text-5xl lg:text-6xl font-bold whitespace-nowrap pointer-events-none select-none"
         style={{
           color,
-          filter: 'blur(2px)',
-          opacity: 0.5,
-          transform: 'translate(1px, 1px)',
+          filter: 'blur(3px)',
+          opacity: 0.25,
+          transform: 'scale(1.03)',
+          transformOrigin: 'left center',
         }}
         aria-hidden="true"
       >

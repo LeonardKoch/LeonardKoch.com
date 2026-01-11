@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Google Fonts - Great Vibes for flourishy cursive */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Custom CSS Variables */
 :root {
@@ -32,7 +32,7 @@ code {
 }
 
 .font-cursive {
-  font-family: 'Caveat', cursive;
+  font-family: 'Great Vibes', cursive;
 }
 
 /* Dot paper pattern - accepts --dot-color custom property */
@@ -49,25 +49,23 @@ code {
   background-size: var(--dot-spacing) var(--dot-spacing);
 }
 
-/* Gradient mask for fade effect: full opacity top-left to low opacity bottom-right */
-.dot-paper-gradient {
-  mask-image: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.4) 40%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.4) 40%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
+/* Title area: fade from full opacity at top to faint at bottom, plus horizontal fade from edges */
+.dot-paper-title {
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
+    linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.15) 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
+    linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.15) 100%);
+  -webkit-mask-composite: source-in;
 }
 
-/* Below title area - very low opacity dots */
+/* Content area - very low opacity dots with horizontal fade */
 .dot-paper-faint {
-  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 10%, var(--dot-base-faint));
+  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 12%, var(--dot-base-faint));
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
 }
 
 /* Prose styling for post content */
@@ -124,12 +122,28 @@ code {
   color: #6b7280;
 }
 
-.prose-blog pre {
-  background-color: #1e293b;
+.prose-blog pre,
+.prose-blog .shiki,
+.prose-blog .shiki-fallback {
+  background-color: rgba(241, 245, 249, 0.5) !important;
+  border: 1px solid rgba(226, 232, 240, 0.5);
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1.25em;
+}
+
+.prose-blog pre code,
+.prose-blog .shiki code,
+.prose-blog .shiki-fallback code {
+  font-size: 0.875em;
+  background: none !important;
+  padding: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.prose-blog .shiki {
+  line-height: 1.6;
 }
 
 .prose-blog code {

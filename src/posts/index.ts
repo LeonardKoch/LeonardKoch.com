@@ -7,6 +7,7 @@ export interface PostMeta {
   title: string
   date: string
   color: string
+  description: string
 }
 
 export interface Post {

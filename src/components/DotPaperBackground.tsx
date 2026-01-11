@@ -1,20 +1,20 @@
 interface DotPaperBackgroundProps {
   color: string
   className?: string
-  variant?: 'header' | 'content'
+  variant?: 'title' | 'content'
 }
 
 export function DotPaperBackground({
   color,
   className = '',
-  variant = 'header',
+  variant = 'title',
 }: DotPaperBackgroundProps) {
-  const baseClasses =
-    variant === 'header' ? 'dot-paper dot-paper-gradient' : 'dot-paper dot-paper-faint'
+  const variantClasses =
+    variant === 'title' ? 'dot-paper dot-paper-title' : 'dot-paper dot-paper-faint'
 
   return (
     <div
-      className={`absolute inset-0 ${baseClasses} ${className}`}
+      className={`absolute inset-0 ${variantClasses} ${className}`}
       style={{ '--dot-color': color } as React.CSSProperties}
     />
   )

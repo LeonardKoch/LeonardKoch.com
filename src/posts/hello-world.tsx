@@ -1,8 +1,11 @@
+import { Code } from '../components/Code'
+
 export const meta = {
   slug: 'hello-world',
   title: 'Hello World',
   date: '2026-01-11',
-  color: '#6366f1',
+  color: '#c14444',
+  description: 'Welcome to my blog! An introduction to what I\'ll be writing about and the tech stack behind this site.',
 }
 
 export default function HelloWorld() {
@@ -36,13 +39,11 @@ export default function HelloWorld() {
 
       <h2>Code Example</h2>
       <p>Here's a simple TypeScript function:</p>
-      <pre>
-        <code>{`function greet(name: string): string {
+      <Code lang="typescript">{`function greet(name: string): string {
   return \`Hello, \${name}!\`
 }
 
-console.log(greet('World'))`}</code>
-      </pre>
+console.log(greet('World'))`}</Code>
 
       <p>
         Stay tuned for more posts! You can find me on the social links above.

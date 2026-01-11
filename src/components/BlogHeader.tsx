@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { Linkedin } from 'lucide-react'
+import { Linkedin, Rss } from 'lucide-react'
 
 interface SocialLink {
   icon: React.ReactNode
@@ -52,6 +52,11 @@ const socialLinks: SocialLink[] = [
     href: 'https://bsky.app/profile/leonardkoch.bsky.social',
     label: 'Bluesky',
   },
+  {
+    icon: <Rss size={20} />,
+    href: '/rss.xml',
+    label: 'RSS Feed',
+  },
 ]
 
 export function BlogHeader() {
@@ -59,7 +64,7 @@ export function BlogHeader() {
     <header className="h-[160px] flex flex-col justify-center items-center px-4">
       {/* Logo and Name */}
       <Link to="/" className="flex items-center gap-3 mb-4 hover:opacity-80 transition-opacity">
-        <img src="/lion.svg" alt="" className="w-10 h-10" />
+        {/*<img src="/lion.svg" alt="" className="w-10 h-10" />*/}
         <span className="text-2xl font-semibold text-[#1a1a1a] font-display">LeonardKoch</span>
       </Link>
 

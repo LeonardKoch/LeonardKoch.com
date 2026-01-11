@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LeonardKoch</title>
+    <link>https://leonardkoch.com</link>
+    <description>Personal blog by Leonard Koch</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://leonardkoch.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Hello World</title>
+      <link>https://leonardkoch.com/post/hello-world</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/hello-world</guid>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 GMT</pubDate>
+      <description>Welcome to my blog! An introduction to what I&apos;ll be writing about and the tech stack behind this site.</description>
+    </item>
+    <item>
+      <title>Building with TanStack Start</title>
+      <link>https://leonardkoch.com/post/building-with-tanstack</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/building-with-tanstack</guid>
+      <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
+      <description>Why I chose TanStack Start for this blog: file-based routing, end-to-end type safety, and powerful server functions.</description>
+    </item>
+    <item>
+      <title>The Joy of Bun</title>
+      <link>https://leonardkoch.com/post/the-joy-of-bun</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/the-joy-of-bun</guid>
+      <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
+      <description>Bun is a fast all-in-one JavaScript runtime, package manager, bundler, and test runner. Here&apos;s why it&apos;s a game changer.</description>
+    </item>
+  </channel>
+</rss>
