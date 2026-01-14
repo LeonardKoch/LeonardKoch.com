@@ -35,7 +35,7 @@ code {
   font-family: 'Great Vibes', cursive;
 }
 
-/* Dot paper pattern - accepts --dot-color custom property */
+/* Base dot pattern */
 .dot-paper {
   --dot-size: 1.5px;
   --dot-spacing: 20px;
@@ -49,23 +49,35 @@ code {
   background-size: var(--dot-spacing) var(--dot-spacing);
 }
 
-/* Title area: fade from full opacity at top to faint at bottom, plus horizontal fade from edges */
-.dot-paper-title {
+/* Header area - full intensity dots with fade at top and into content */
+.dot-paper-header {
   mask-image:
     linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
-    linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.15) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40px, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   mask-composite: intersect;
   -webkit-mask-image:
     linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
-    linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.15) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40px, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   -webkit-mask-composite: source-in;
 }
 
-/* Content area - very low opacity dots with horizontal fade */
-.dot-paper-faint {
-  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 12%, var(--dot-base-faint));
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+/* Content area - faint dots in margins with clear channel for text */
+.dot-paper-content {
+  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 15%, var(--dot-base-faint));
+  /* Horizontal: edge fade -> margin dots -> content fade -> margin dots -> edge fade */
+  mask-image:
+    linear-gradient(to right,
+      transparent 0%,
+      rgba(0,0,0,1) 5%,
+      rgba(0,0,0,1) 10%,
+      transparent 12%,
+      transparent 88%,
+      rgba(0,0,0,1) 90%,
+      rgba(0,0,0,1) 95%,
+      transparent 100%
+    ),
+    linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+  mask-composite: intersect;
 }
 
 /* Prose styling for post content */
