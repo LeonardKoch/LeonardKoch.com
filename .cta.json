@@ -1,15 +1,12 @@
 {
-  "projectName": "blog-leonard",
-  "mode": "file-router",
-  "typescript": true,
-  "tailwind": true,
-  "packageManager": "bun",
-  "git": true,
-  "addOnOptions": {},
-  "version": 1,
-  "framework": "react-cra",
-  "chosenAddOns": [
-    "start",
-    "nitro"
-  ]
+    "projectName": "blog-leonard",
+    "mode": "file-router",
+    "typescript": true,
+    "tailwind": true,
+    "packageManager": "bun",
+    "git": true,
+    "addOnOptions": {},
+    "version": 1,
+    "framework": "react-cra",
+    "chosenAddOns": ["start", "nitro"]
 }

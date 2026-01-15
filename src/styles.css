@@ -1,185 +1,239 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Google Fonts - Great Vibes for flourishy cursive */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Custom CSS Variables */
 :root {
-  --blog-bg: #f8f9fb;
-  --text-dark: #1a1a1a;
-  --text-body: #374151;
-  --dot-base: #e5e7eb;
-  --dot-base-faint: #f0f0f0;
+    --blog-bg: #f8f9fb;
+    --text-dark: #1a1a1a;
+    --text-body: #374151;
+    --dot-base: #e5e7eb;
+    --dot-base-faint: #f0f0f0;
 }
 
 body {
-  @apply m-0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--blog-bg);
-  color: var(--text-body);
+    @apply m-0;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--blog-bg);
+    color: var(--text-body);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family:
+        source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Font utilities */
 .font-display {
-  font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .font-cursive {
-  font-family: 'Great Vibes', cursive;
+    font-family: 'Great Vibes', cursive;
 }
 
 /* Base dot pattern */
 .dot-paper {
-  --dot-size: 1.5px;
-  --dot-spacing: 20px;
-  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 30%, var(--dot-base));
+    --dot-size: 1.5px;
+    --dot-spacing: 20px;
+    --dot-color-mixed: color-mix(
+        in srgb,
+        var(--dot-color, #6366f1) 30%,
+        var(--dot-base)
+    );
 
-  background-image: radial-gradient(
-    circle,
-    var(--dot-color-mixed) var(--dot-size),
-    transparent var(--dot-size)
-  );
-  background-size: var(--dot-spacing) var(--dot-spacing);
+    background-image: radial-gradient(
+        circle,
+        var(--dot-color-mixed) var(--dot-size),
+        transparent var(--dot-size)
+    );
+    background-size: var(--dot-spacing) var(--dot-spacing);
 }
 
 /* Header area - full intensity dots with fade at top and into content */
 .dot-paper-header {
-  mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
-    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40px, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  mask-composite: intersect;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%),
-    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40px, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 15%,
+            rgba(0, 0, 0, 1) 85%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 40px,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    mask-composite: intersect;
+    -webkit-mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 15%,
+            rgba(0, 0, 0, 1) 85%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 40px,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    -webkit-mask-composite: source-in;
 }
 
 /* Content area - faint dots in margins with clear channel for text */
 .dot-paper-content {
-  --dot-color-mixed: color-mix(in srgb, var(--dot-color, #6366f1) 15%, var(--dot-base-faint));
-  /* Horizontal: edge fade -> margin dots -> content fade -> margin dots -> edge fade */
-  mask-image:
-    linear-gradient(to right,
-      transparent 0%,
-      rgba(0,0,0,1) 5%,
-      rgba(0,0,0,1) 8%,
-      rgba(0,0,0,0.5) 10%,
-      transparent 12%,
-      transparent 88%,
-      rgba(0,0,0,0.5) 90%,
-      rgba(0,0,0,1) 92%,
-      rgba(0,0,0,1) 95%,
-      transparent 100%
-    ),
-    linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
-  mask-composite: intersect;
+    --dot-color-mixed: color-mix(
+        in srgb,
+        var(--dot-color, #6366f1) 15%,
+        var(--dot-base-faint)
+    );
+    /* Horizontal: edge fade -> margin dots -> content fade -> margin dots -> edge fade */
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 5%,
+            rgba(0, 0, 0, 1) 8%,
+            rgba(0, 0, 0, 0.5) 10%,
+            transparent 12%,
+            transparent 88%,
+            rgba(0, 0, 0, 0.5) 90%,
+            rgba(0, 0, 0, 1) 92%,
+            rgba(0, 0, 0, 1) 95%,
+            transparent 100%
+        ),
+        linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%);
+    mask-composite: intersect;
 }
 
 /* Prose styling for post content */
 .prose-blog {
-  color: var(--text-body);
-  line-height: 1.75;
+    color: var(--text-body);
+    line-height: 1.75;
 }
 
 .prose-blog h1,
 .prose-blog h2,
 .prose-blog h3,
 .prose-blog h4 {
-  color: var(--text-dark);
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  margin-top: 2em;
-  margin-bottom: 0.75em;
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
 }
 
-.prose-blog h1 { font-size: 2rem; }
-.prose-blog h2 { font-size: 1.5rem; }
-.prose-blog h3 { font-size: 1.25rem; }
-.prose-blog h4 { font-size: 1.125rem; }
+.prose-blog h1 {
+    font-size: 2rem;
+}
+.prose-blog h2 {
+    font-size: 1.5rem;
+}
+.prose-blog h3 {
+    font-size: 1.25rem;
+}
+.prose-blog h4 {
+    font-size: 1.125rem;
+}
 
 .prose-blog p {
-  margin-bottom: 1.25em;
+    margin-bottom: 1.25em;
 }
 
 .prose-blog a {
-  color: var(--text-dark);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+    color: var(--text-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .prose-blog a:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .prose-blog ul,
 .prose-blog ol {
-  margin-bottom: 1.25em;
-  padding-left: 1.5em;
+    margin-bottom: 1.25em;
+    padding-left: 1.5em;
 }
 
 .prose-blog li {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .prose-blog blockquote {
-  border-left: 3px solid var(--dot-base);
-  padding-left: 1em;
-  margin-left: 0;
-  font-style: italic;
-  color: #6b7280;
+    border-left: 3px solid var(--dot-base);
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: #6b7280;
 }
 
 .prose-blog pre,
 .prose-blog .shiki,
 .prose-blog .shiki-fallback {
-  background-color: rgba(241, 245, 249, 0.5) !important;
-  border: 1px solid rgba(226, 232, 240, 0.5);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  overflow-x: auto;
-  margin-bottom: 1.25em;
+    background-color: rgba(241, 245, 249, 0.5) !important;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1.25em;
 }
 
 .prose-blog pre code,
 .prose-blog .shiki code,
 .prose-blog .shiki-fallback code {
-  font-size: 0.875em;
-  background: none !important;
-  padding: 0;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 0.875em;
+    background: none !important;
+    padding: 0;
+    font-family:
+        source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .prose-blog .shiki {
-  line-height: 1.6;
+    line-height: 1.6;
 }
 
 .prose-blog code {
-  font-size: 0.875em;
+    font-size: 0.875em;
 }
 
 .prose-blog :not(pre) > code {
-  background-color: #f1f5f9;
-  padding: 0.125em 0.375em;
-  border-radius: 0.25rem;
-  color: var(--text-dark);
+    background-color: #f1f5f9;
+    padding: 0.125em 0.375em;
+    border-radius: 0.25rem;
+    color: var(--text-dark);
 }
 
 .prose-blog img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  margin: 1.5em 0;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5em 0;
 }
 
 .prose-blog hr {
-  border: none;
-  border-top: 1px solid var(--dot-base);
-  margin: 2em 0;
+    border: none;
+    border-top: 1px solid var(--dot-base);
+    margin: 2em 0;
 }
