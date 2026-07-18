@@ -94,6 +94,42 @@ code {
     -webkit-mask-composite: source-in;
 }
 
+/* Footer area - thinner full-intensity band, mirroring the header */
+.dot-paper-footer {
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 15%,
+            rgba(0, 0, 0, 1) 85%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 40%,
+            rgba(0, 0, 0, 1) calc(100% - 24px),
+            rgba(0, 0, 0, 0) 100%
+        );
+    mask-composite: intersect;
+    -webkit-mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 15%,
+            rgba(0, 0, 0, 1) 85%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 40%,
+            rgba(0, 0, 0, 1) calc(100% - 24px),
+            rgba(0, 0, 0, 0) 100%
+        );
+    -webkit-mask-composite: source-in;
+}
+
 /* Content area - faint dots in margins with clear channel for text */
 .dot-paper-content {
     --dot-color-mixed: color-mix(
@@ -116,7 +152,13 @@ code {
             rgba(0, 0, 0, 1) 95%,
             transparent 100%
         ),
-        linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%);
+        /* Fade out before the footer band so the two dot grids don't overlap */
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) calc(100% - 90px),
+            rgba(0, 0, 0, 0) calc(100% - 30px)
+        );
     mask-composite: intersect;
 }
 

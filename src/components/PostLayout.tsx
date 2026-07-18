@@ -45,6 +45,14 @@ export function PostLayout({
                 />
             </div>
 
+            {/* Footer dot pattern - thinner band closing out the post */}
+            <div className="absolute -left-8 -right-8 md:-left-16 md:-right-16 bottom-0 h-[90px]">
+                <div
+                    className="absolute inset-0 dot-paper dot-paper-footer"
+                    style={{ '--dot-color': meta.color } as React.CSSProperties}
+                />
+            </div>
+
             {/* Title Area */}
             <header className="relative z-10 pt-16 pb-12 px-4 md:px-8">
                 {isFullPage ? (

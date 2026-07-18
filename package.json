@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "bun vite dev --port 3000",
+        "dev": "bun vite dev --port 7474",
         "build": "bun scripts/generate-rss.ts && bun vite build",
         "preview": "bun vite preview",
         "test": "vitest run",

@@ -7,19 +7,19 @@ interface SocialLink {
     label: string;
 }
 
-function TwitterIcon({ size = 20 }: { size?: number }) {
-    return (
-        <svg
-            width={size}
-            height={size}
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-        >
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-    );
-}
+// function TwitterIcon({ size = 20 }: { size?: number }) {
+//     return (
+//         <svg
+//             width={size}
+//             height={size}
+//             viewBox="0 0 24 24"
+//             fill="currentColor"
+//             aria-hidden="true"
+//         >
+//             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+//         </svg>
+//     );
+// }
 
 function BlueskyIcon({ size = 20 }: { size?: number }) {
     return (
@@ -42,14 +42,14 @@ const socialLinks: SocialLink[] = [
         href: 'https://linkedin.com/in/leonardkoch',
         label: 'LinkedIn',
     },
-    {
-        icon: <TwitterIcon size={20} />,
-        href: 'https://x.com/leonardkoch',
-        label: 'X (Twitter)',
-    },
+    // {
+    //     icon: <TwitterIcon size={20} />,
+    //     href: 'https://x.com/leonardkoch',
+    //     label: 'X (Twitter)',
+    // },
     {
         icon: <BlueskyIcon size={20} />,
-        href: 'https://bsky.app/profile/leonardkoch.bsky.social',
+        href: 'https://bsky.app/profile/leonardkoch.com',
         label: 'Bluesky',
     },
     {
