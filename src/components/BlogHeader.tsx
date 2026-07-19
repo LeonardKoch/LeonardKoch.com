@@ -1,10 +1,14 @@
 import { Link } from '@tanstack/react-router';
 import { Linkedin, Rss } from 'lucide-react';
+import { TitleStack } from './TitleStack';
+
+const titleColors = ['#c14444', '#10b981', '#3a87d1'];
 
 interface SocialLink {
     icon: React.ReactNode;
     href: string;
     label: string;
+    hoverColor: string;
 }
 
 // function TwitterIcon({ size = 20 }: { size?: number }) {
@@ -41,21 +45,25 @@ const socialLinks: SocialLink[] = [
         icon: <Linkedin size={20} />,
         href: 'https://linkedin.com/in/leonardkoch',
         label: 'LinkedIn',
+        hoverColor: '#0A66C2',
     },
     // {
     //     icon: <TwitterIcon size={20} />,
     //     href: 'https://x.com/leonardkoch',
     //     label: 'X (Twitter)',
+    //     hoverColor: '#000000',
     // },
     {
         icon: <BlueskyIcon size={20} />,
         href: 'https://bsky.app/profile/leonardkoch.com',
         label: 'Bluesky',
+        hoverColor: '#1185FE',
     },
     {
         icon: <Rss size={20} />,
         href: '/rss.xml',
         label: 'RSS Feed',
+        hoverColor: '#F26522',
     },
 ];
 
@@ -63,14 +71,16 @@ export function BlogHeader() {
     return (
         <header className="h-[160px] flex flex-col justify-center items-center px-4">
             {/* Logo and Name */}
-            <Link
-                to="/"
-                className="flex items-center gap-3 mb-4 hover:opacity-80 transition-opacity"
-            >
+            <Link to="/" className="flex items-center gap-3 mb-4">
                 {/*<img src="/lion.svg" alt="" className="w-10 h-10" />*/}
-                <span className="text-2xl font-semibold text-[#1a1a1a] font-display">
-                    LeonardKoch
-                </span>
+                <TitleStack
+                    title="LeonardKoch.com"
+                    colors={titleColors}
+                    as="span"
+                    textClassName="text-2xl"
+                    scale={0.5}
+                    layerOpacity={0.5}
+                />
             </Link>
 
             {/* Social Links - hidden if empty */}
@@ -82,7 +92,12 @@ export function BlogHeader() {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-gray-600 transition-colors"
+                            className="text-gray-400 hover:text-(--hover-color) transition-colors"
+                            style={
+                                {
+                                    '--hover-color': link.hoverColor,
+                                } as React.CSSProperties
+                            }
                             aria-label={link.label}
                         >
                             {link.icon}
