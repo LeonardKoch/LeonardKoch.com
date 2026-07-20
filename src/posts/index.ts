@@ -1,30 +1,29 @@
-import HelloWorldPost, { meta as helloWorldMeta } from './hello-world';
-import BuildingWithTanStackPost, {
-    meta as buildingWithTanStackMeta,
-} from './building-with-tanstack';
-import TheJoyOfBunPost, { meta as theJoyOfBunMeta } from './the-joy-of-bun';
+import { toPostMeta, slugFromPath, type PostMeta } from '../lib/post-schema';
 
-export interface PostMeta {
-    slug: string;
-    title: string;
-    date: string;
-    color: string;
-    description: string;
-}
+export type { PostMeta };
 
 export interface Post {
     meta: PostMeta;
     Component: React.ComponentType;
 }
 
+// Auto-discover every post in content/posts. Add a post = add an .mdx file.
+// `eager` inlines the modules so their components are available during SSR.
+const modules = import.meta.glob<{
+    default: React.ComponentType;
+    frontmatter: Record<string, unknown>;
+}>('../../content/posts/*.mdx', { eager: true });
+
 // Array of all posts, sorted by date (newest first)
-export const posts: Post[] = [
-    { meta: helloWorldMeta, Component: HelloWorldPost },
-    { meta: buildingWithTanStackMeta, Component: BuildingWithTanStackPost },
-    { meta: theJoyOfBunMeta, Component: TheJoyOfBunPost },
-].sort(
-    (a, b) => new Date(b.meta.date).getTime() - new Date(a.meta.date).getTime(),
-);
+export const posts: Post[] = Object.entries(modules)
+    .map(([path, mod]) => ({
+        meta: toPostMeta(slugFromPath(path), mod.frontmatter),
+        Component: mod.default,
+    }))
+    .sort(
+        (a, b) =>
+            new Date(b.meta.date).getTime() - new Date(a.meta.date).getTime(),
+    );
 
 // Helper to find a post by slug
 export function getPostBySlug(slug: string): Post | undefined {

@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { TitleStack } from './TitleStack';
+import { MDXComponentsProvider } from './mdx';
 import type { PostMeta } from '../posts';
 
 interface PostLayoutProps {
@@ -75,7 +76,9 @@ export function PostLayout({
 
             {/* Content Area */}
             <div className="relative z-10 px-4 md:px-8 pb-8">
-                <div className="prose-blog ml-[30px]">{children}</div>
+                <div className="prose-blog ml-[30px]">
+                    <MDXComponentsProvider>{children}</MDXComponentsProvider>
+                </div>
             </div>
         </article>
     );

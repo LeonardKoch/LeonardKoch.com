@@ -154,11 +154,11 @@ code {
         ),
         /* Fade out before the footer band so the two dot grids don't overlap */
         linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 1) calc(100% - 90px),
-            rgba(0, 0, 0, 0) calc(100% - 30px)
-        );
+                to bottom,
+                rgba(0, 0, 0, 1) 0%,
+                rgba(0, 0, 0, 1) calc(100% - 90px),
+                rgba(0, 0, 0, 0) calc(100% - 30px)
+            );
     mask-composite: intersect;
 }
 
@@ -225,8 +225,7 @@ code {
 }
 
 .prose-blog pre,
-.prose-blog .shiki,
-.prose-blog .shiki-fallback {
+.prose-blog .shiki {
     background-color: rgba(241, 245, 249, 0.5) !important;
     border: 1px solid rgba(226, 232, 240, 0.5);
     border-radius: 0.5rem;
@@ -236,8 +235,7 @@ code {
 }
 
 .prose-blog pre code,
-.prose-blog .shiki code,
-.prose-blog .shiki-fallback code {
+.prose-blog .shiki code {
     font-size: 0.875em;
     background: none !important;
     padding: 0;
@@ -271,4 +269,61 @@ code {
     border: none;
     border-top: 1px solid var(--dot-base);
     margin: 2em 0;
+}
+
+/*
+ * Full-width sections for MDX posts.
+ * A section spans the full width of the post's prose text column and stays
+ * flush with the body text on both edges — it does not break out into the
+ * article's outer padding or margins.
+ */
+.prose-blog .full-bleed {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.prose-blog .full-bleed-inner {
+    padding: 1.75rem;
+}
+
+@media (min-width: 768px) {
+    .prose-blog .full-bleed-inner {
+        padding: 2.25rem;
+    }
+}
+
+/* Remove stacked-margin gaps between adjacent block children in a section. */
+.prose-blog .full-bleed-inner > :first-child {
+    margin-top: 0;
+}
+.prose-blog .full-bleed-inner > :last-child {
+    margin-bottom: 0;
+}
+
+.hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.5em;
+}
+
+.hero-content {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.split-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .split-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }

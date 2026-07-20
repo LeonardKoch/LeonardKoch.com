@@ -7,7 +7,8 @@ export const Route = createFileRoute('/post/$slug')({
     loader: ({ params }) => {
         const post = getPostBySlug(params.slug);
         if (!post) throw notFound();
-        // Return only serializable data
+        // Loaders must return serializable data, so pass meta only; the post
+        // component is looked up again (server and client) when rendering.
         return { meta: post.meta };
     },
     head: ({ loaderData }) => ({

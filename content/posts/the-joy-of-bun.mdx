@@ -1,0 +1,59 @@
+---
+title: The Joy of Bun
+date: 2026-01-08
+color: '#3a87d1'
+description: "Bun is a fast all-in-one JavaScript runtime, package manager, bundler, and test runner. Here's why it's a game changer."
+---
+
+Bun is a fast all-in-one JavaScript runtime. It's not just a runtime though —
+it's a package manager, bundler, and test runner all in one.
+
+## Speed That You Can Feel
+
+The first thing you notice with Bun is the speed. Installing packages feels
+instant. Starting a dev server takes milliseconds. It's the kind of speed that
+changes how you work.
+
+```bash
+# Install dependencies
+bun install  # ~500ms vs npm's 10+ seconds
+
+# Run scripts
+bun run dev  # Instant startup
+```
+
+## Native TypeScript Support
+
+No configuration needed. Just write TypeScript and run it directly:
+
+```typescript
+// script.ts
+const greeting: string = 'Hello, Bun!';
+console.log(greeting);
+```
+
+```bash
+# Run it directly
+$ bun script.ts
+```
+
+## Drop-in Node.js Replacement
+
+Most Node.js code just works. Bun implements Node's APIs, so you can often
+switch without changing any code. Your existing `package.json` scripts,
+dependencies, and tooling continue to work.
+
+## Built-in Testing
+
+Bun includes a test runner that's compatible with Jest's API:
+
+```typescript
+import { test, expect } from 'bun:test';
+
+test('addition', () => {
+    expect(2 + 2).toBe(4);
+});
+```
+
+If you haven't tried Bun yet, give it a shot. The speed alone makes it worth
+the switch.

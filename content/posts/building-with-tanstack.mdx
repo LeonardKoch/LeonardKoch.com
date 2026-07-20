@@ -1,0 +1,45 @@
+---
+title: Building with TanStack Start
+date: 2026-01-10
+color: '#10b981'
+description: 'Why I chose TanStack Start for this blog: file-based routing, end-to-end type safety, and powerful server functions.'
+---
+
+TanStack Start is a full-stack React framework that makes building modern web
+applications a joy. Here's why I chose it for this blog.
+
+## File-Based Routing
+
+Routes are defined by the file structure in your `src/routes` folder. Create a
+file, and you have a route. It's that simple.
+
+```bash
+src/routes/
+├── __root.tsx      # Root layout
+├── index.tsx       # Home page (/)
+└── post/
+    └── $slug.tsx   # Dynamic route (/post/:slug)
+```
+
+## Type Safety Everywhere
+
+TanStack Router provides end-to-end type safety. Your route params, loader
+data, and search params are all fully typed. No more runtime errors from typos
+in route names.
+
+## Server Functions
+
+Need to run code on the server? Just use `createServerFn` and call it from your
+components. No API routes needed for simple operations.
+
+```typescript
+import { createServerFn } from '@tanstack/react-start';
+
+const getData = createServerFn('GET', async () => {
+    // This runs on the server
+    return { message: 'Hello from the server!' };
+});
+```
+
+The combination of these features makes TanStack Start perfect for content
+sites, dashboards, and full applications alike.

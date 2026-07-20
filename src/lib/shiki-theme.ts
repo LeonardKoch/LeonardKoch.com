@@ -1,15 +1,11 @@
-import { createHighlighter } from 'shiki';
-import { useEffect, useState } from 'react';
+import type { ThemeRegistrationRaw } from 'shiki';
 
-interface CodeProps {
-    children: string;
-    lang?: string;
-}
-
-// Light theme colors that fit the blog aesthetic
-const theme = {
+// Light theme colors that fit the blog aesthetic.
+// Shared by the build-time rehype-shiki plugin (see vite.config.ts) so code is
+// highlighted at build with no client-side JavaScript.
+export const blogLightTheme: ThemeRegistrationRaw = {
     name: 'blog-light',
-    type: 'light' as const,
+    type: 'light',
     colors: {
         'editor.background': '#f1f5f9',
         'editor.foreground': '#334155',
@@ -70,50 +66,3 @@ const theme = {
         },
     ],
 };
-
-let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
-
-function getHighlighter() {
-    if (!highlighterPromise) {
-        highlighterPromise = createHighlighter({
-            themes: [theme],
-            langs: [
-                'typescript',
-                'javascript',
-                'tsx',
-                'jsx',
-                'bash',
-                'json',
-                'css',
-                'html',
-            ],
-        });
-    }
-    return highlighterPromise;
-}
-
-export function Code({ children, lang = 'typescript' }: CodeProps) {
-    const [html, setHtml] = useState<string | null>(null);
-    const code = children.trim();
-
-    useEffect(() => {
-        getHighlighter().then((highlighter) => {
-            const highlighted = highlighter.codeToHtml(code, {
-                lang,
-                theme: 'blog-light',
-            });
-            setHtml(highlighted);
-        });
-    }, [code, lang]);
-
-    if (!html) {
-        // Fallback while loading
-        return (
-            <pre className="shiki-fallback">
-                <code>{code}</code>
-            </pre>
-        );
-    }
-
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
-}
