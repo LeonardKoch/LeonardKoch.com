@@ -3,11 +3,12 @@ interface SiteTitleProps {
     color: string;
 }
 
-// Echoes cascading up to the right; each one slides further out on hover.
+// At rest the echoes cascade up to the right; on hover they scatter around the
+// title the way the post title stack does.
 const ECHOES = [
-    { x: 24, y: -9, hoverX: 78, hoverY: -26, stroke: 0.5 },
-    { x: 16, y: -6, hoverX: 50, hoverY: -16, stroke: 0.75 },
-    { x: 8, y: -3, hoverX: 24, hoverY: -8, stroke: 1 },
+    { x: 24, y: -9, hoverX: 14, hoverY: -10, stroke: 0.5 },
+    { x: 16, y: -6, hoverX: -12, hoverY: 6, stroke: 0.75 },
+    { x: 8, y: -3, hoverX: 7, hoverY: 9, stroke: 1 },
 ];
 
 export function SiteTitle({ title, color }: SiteTitleProps) {

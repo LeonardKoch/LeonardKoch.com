@@ -2,8 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { Linkedin, Rss } from 'lucide-react';
 import { SiteTitle } from './SiteTitle';
 
-// Same hue as the light blue post accent (#3a87d1), a few stops darker.
-const titleColor = '#2b6cab';
+// Same hue as the blue post accent (#3a87d1), lifted to read against the dark text.
+const titleColor = '#4d94dd';
 
 interface SocialLink {
     icon: React.ReactNode;
