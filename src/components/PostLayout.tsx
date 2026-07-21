@@ -58,7 +58,7 @@ export function PostLayout({
             <header className="relative z-10 pt-16 pb-12 px-4 md:px-8">
                 {isFullPage ? (
                     <div>
-                        <TitleStack title={meta.title} colors={[meta.color]} />
+                        <TitleStack title={meta.title} color={meta.color} />
                     </div>
                 ) : (
                     <Link
@@ -66,7 +66,7 @@ export function PostLayout({
                         params={{ slug: meta.slug }}
                         className="block hover:opacity-80 transition-opacity"
                     >
-                        <TitleStack title={meta.title} colors={[meta.color]} />
+                        <TitleStack title={meta.title} color={meta.color} />
                     </Link>
                 )}
                 <time className="block mt-4 ml-[30px] text-gray-500 font-light text-sm">

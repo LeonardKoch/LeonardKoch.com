@@ -1,8 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import { Linkedin, Rss } from 'lucide-react';
-import { TitleStack } from './TitleStack';
+import { SiteTitle } from './SiteTitle';
 
-const titleColors = ['#c14444', '#10b981', '#3a87d1'];
+// Same hue as the light blue post accent (#3a87d1), a few stops darker.
+const titleColor = '#2b6cab';
 
 interface SocialLink {
     icon: React.ReactNode;
@@ -73,14 +74,7 @@ export function BlogHeader() {
             {/* Logo and Name */}
             <Link to="/" className="flex items-center gap-3 mb-4">
                 {/*<img src="/lion.svg" alt="" className="w-10 h-10" />*/}
-                <TitleStack
-                    title="LeonardKoch.com"
-                    colors={titleColors}
-                    as="span"
-                    textClassName="text-2xl"
-                    scale={0.5}
-                    layerOpacity={0.5}
-                />
+                <SiteTitle title="LeonardKoch.com" color={titleColor} />
             </Link>
 
             {/* Social Links - hidden if empty */}
