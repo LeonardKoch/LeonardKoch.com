@@ -166,6 +166,33 @@ code {
 .prose-blog {
     color: var(--text-body);
     line-height: 1.75;
+
+    /*
+     * Running text is capped at a comfortable measure, while the container
+     * stays full width so code blocks, images and sections can use it. Only
+     * top-level text blocks are clamped — anything nested inside a section
+     * (`.full-bleed`) fills that section instead.
+     */
+    --prose-measure: 650px;
+}
+
+.prose-blog > p,
+.prose-blog > h1,
+.prose-blog > h2,
+.prose-blog > h3,
+.prose-blog > h4,
+.prose-blog > h5,
+.prose-blog > h6,
+.prose-blog > ul,
+.prose-blog > ol,
+.prose-blog > blockquote,
+.prose-blog > hr {
+    max-width: var(--prose-measure);
+}
+
+/* Markdown wraps a standalone image in a paragraph; let it keep full width. */
+.prose-blog > p:has(> img:only-child) {
+    max-width: none;
 }
 
 .prose-blog h1,

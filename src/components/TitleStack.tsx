@@ -13,8 +13,11 @@ const LAYERS = [
 
 const TEXT_CLASS = 'text-4xl md:text-5xl lg:text-6xl';
 
+// The 30px padding gives the offset layers breathing room. Layers are absolutely
+// positioned but inset by that same 30px, so they get the exact content box the
+// foreground <h1> has and therefore wrap at exactly the same widths.
 export function TitleStack({ title, color }: TitleStackProps) {
-    const layerClass = `absolute font-display font-bold whitespace-nowrap pointer-events-none select-none transition-transform duration-300 ease-out translate-x-[var(--tx)] translate-y-[var(--ty)] group-hover:translate-x-[var(--htx)] group-hover:translate-y-[var(--hty)] ${TEXT_CLASS}`;
+    const layerClass = `absolute top-0 left-[30px] right-[30px] font-display font-bold pointer-events-none select-none transition-transform duration-300 ease-out translate-x-[var(--tx)] translate-y-[var(--ty)] group-hover:translate-x-[var(--htx)] group-hover:translate-y-[var(--hty)] ${TEXT_CLASS}`;
 
     return (
         <div className="group relative inline-block px-[30px]">

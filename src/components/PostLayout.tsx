@@ -10,7 +10,11 @@ interface PostLayoutProps {
 }
 
 function formatDate(dateString: string): string {
-    const date = new Date(dateString);
+    // Frontmatter dates are calendar dates, not instants. `new Date('2026-07-26')`
+    // parses as UTC midnight, which formats as the previous day in any timezone
+    // behind UTC — so build the date from its parts and keep it local throughout.
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
     return date.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
