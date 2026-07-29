@@ -5,28 +5,35 @@
     <link>https://leonardkoch.com</link>
     <description>Personal blog by Leonard Koch</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://leonardkoch.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Hello World</title>
-      <link>https://leonardkoch.com/post/hello-world</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/hello-world</guid>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 GMT</pubDate>
-      <description>Welcome to my blog! An introduction to what I&apos;ll be writing about and the tech stack behind this site.</description>
+      <title>Never to be Published</title>
+      <link>https://leonardkoch.com/post/never-to-be-published</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/never-to-be-published</guid>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
+      <description>.</description>
     </item>
     <item>
-      <title>Building with TanStack Start</title>
-      <link>https://leonardkoch.com/post/building-with-tanstack</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/building-with-tanstack</guid>
-      <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
-      <description>Why I chose TanStack Start for this blog: file-based routing, end-to-end type safety, and powerful server functions.</description>
+      <title>How to Spend the Agentic Dividend</title>
+      <link>https://leonardkoch.com/post/hot-to-spend-the-agentic-dividend</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/hot-to-spend-the-agentic-dividend</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <description>.</description>
     </item>
     <item>
-      <title>The Joy of Bun</title>
-      <link>https://leonardkoch.com/post/the-joy-of-bun</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/the-joy-of-bun</guid>
-      <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
-      <description>Bun is a fast all-in-one JavaScript runtime, package manager, bundler, and test runner. Here&apos;s why it&apos;s a game changer.</description>
+      <title>Skill-Gap induced AI Awe</title>
+      <link>https://leonardkoch.com/post/skill-gap-induced-ai-awe</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/skill-gap-induced-ai-awe</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <description>hello</description>
+    </item>
+    <item>
+      <title>Your Friend Steve</title>
+      <link>https://leonardkoch.com/post/your-friend-steve</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/your-friend-steve</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+      <description>hello</description>
     </item>
   </channel>
 </rss>

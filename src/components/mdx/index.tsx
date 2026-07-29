@@ -2,6 +2,7 @@ import { MDXProvider } from '@mdx-js/react';
 import type { ReactNode } from 'react';
 import { FullBleed } from './FullBleed';
 import { Hero } from './Hero';
+import { MdxLink } from './MdxLink';
 import { Split } from './Split';
 
 // The catalog of components available in every .mdx post without an import.
@@ -11,6 +12,9 @@ export const mdxComponents = {
     FullBleed,
     Hero,
     Split,
+    // Markdown links render through the router, so post-to-post links are
+    // client-side navigations rather than full page reloads.
+    a: MdxLink,
 };
 
 /**
@@ -21,4 +25,4 @@ export function MDXComponentsProvider({ children }: { children: ReactNode }) {
     return <MDXProvider components={mdxComponents}>{children}</MDXProvider>;
 }
 
-export { FullBleed, Hero, Split };
+export { FullBleed, Hero, MdxLink, Split };
