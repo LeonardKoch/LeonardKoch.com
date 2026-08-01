@@ -12,3 +12,6 @@ count.txt
 .vinxi
 todos.json
 .idea
+
+# Font cache for scripts/generate-favicon.ts; re-downloaded on demand.
+scripts/assets
