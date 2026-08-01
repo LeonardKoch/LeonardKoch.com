@@ -7,6 +7,9 @@ export const frontmatterSchema = z.object({
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
     color: z.string().regex(/^#[0-9a-fA-F]{3,8}$/, 'color must be a hex value'),
     description: z.string().min(1),
+    // Drafts: kept out of listings and the RSS feed everywhere, and only
+    // reachable under /post/<slug> in development.
+    unpublished: z.boolean().optional(),
 });
 
 export type Frontmatter = z.infer<typeof frontmatterSchema>;

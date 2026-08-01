@@ -1,37 +1,11 @@
 // Run with: bun scripts/generate-rss.ts
 
-import { readFileSync, readdirSync, writeFileSync } from 'fs';
-import { join } from 'path';
-import { parse as parseYaml } from 'yaml';
-import {
-    toPostMeta,
-    slugFromPath,
-    type PostMeta,
-} from '../src/lib/post-schema';
+import { writeFileSync } from 'fs';
+import { readPosts } from './read-posts';
 
 const SITE_URL = 'https://leonardkoch.com';
 const SITE_TITLE = 'LeonardKoch';
 const SITE_DESCRIPTION = 'Personal blog by Leonard Koch';
-const POSTS_DIR = 'content/posts';
-
-// Read post metadata straight from the .mdx frontmatter on disk. This runs
-// outside Vite, so it can't use import.meta.glob — but it shares the same zod
-// schema (toPostMeta) as the site loader, so validation can't drift.
-function loadPosts(): PostMeta[] {
-    return readdirSync(POSTS_DIR)
-        .filter((file) => file.endsWith('.mdx'))
-        .map((file) => {
-            const source = readFileSync(join(POSTS_DIR, file), 'utf8');
-            const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-            if (!match) {
-                throw new Error(`Missing frontmatter in ${file}`);
-            }
-            return toPostMeta(slugFromPath(file), parseYaml(match[1]));
-        })
-        .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
-}
 
 function escapeXml(str: string): string {
     return str
@@ -47,7 +21,9 @@ function formatRssDate(dateString: string): string {
     return date.toUTCString();
 }
 
-const posts = loadPosts();
+const posts = readPosts()
+    .filter((post) => !post.meta.unpublished)
+    .map((post) => post.meta);
 
 const items = posts
     .map(

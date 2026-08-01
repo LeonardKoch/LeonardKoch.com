@@ -5,35 +5,14 @@
     <link>https://leonardkoch.com</link>
     <description>Personal blog by Leonard Koch</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://leonardkoch.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Never to be Published</title>
-      <link>https://leonardkoch.com/post/never-to-be-published</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/never-to-be-published</guid>
-      <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
-      <description>.</description>
-    </item>
-    <item>
       <title>How to Spend the Agentic Dividend</title>
-      <link>https://leonardkoch.com/post/hot-to-spend-the-agentic-dividend</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/hot-to-spend-the-agentic-dividend</guid>
+      <link>https://leonardkoch.com/post/how-to-spend-the-agentic-dividend</link>
+      <guid isPermaLink="true">https://leonardkoch.com/post/how-to-spend-the-agentic-dividend</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
       <description>.</description>
-    </item>
-    <item>
-      <title>Skill-Gap induced AI Awe</title>
-      <link>https://leonardkoch.com/post/skill-gap-induced-ai-awe</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/skill-gap-induced-ai-awe</guid>
-      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <description>hello</description>
-    </item>
-    <item>
-      <title>Your Friend Steve</title>
-      <link>https://leonardkoch.com/post/your-friend-steve</link>
-      <guid isPermaLink="true">https://leonardkoch.com/post/your-friend-steve</guid>
-      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-      <description>hello</description>
     </item>
   </channel>
 </rss>

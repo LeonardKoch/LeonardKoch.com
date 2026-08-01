@@ -11,11 +11,15 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkGfm from 'remark-gfm';
 import rehypeShiki from '@shikijs/rehype';
 import { blogLightTheme } from './src/lib/shiki-theme';
+import { postsManifest } from './scripts/posts-manifest-plugin';
 
 const config = defineConfig({
     plugins: [
         devtools(),
         nitro(),
+        // Supplies `virtual:posts`, and keeps unpublished posts out of
+        // production bundles entirely.
+        postsManifest(),
         // this is the plugin that enables path aliases
         viteTsConfigPaths({
             projects: ['./tsconfig.json'],
