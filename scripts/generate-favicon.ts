@@ -1,7 +1,7 @@
 /*
  * Generates the site's icon set: the initials "LK" in the same layered style as
- * the site header (see src/components/SiteTitle.tsx) — solid dark letters with
- * three outlined blue echoes cascading up and to the right behind them.
+ * the site's titles (see src/components/SiteTitle.tsx and TitleStack.tsx) —
+ * solid dark letters with three outlined blue echoes stepping out behind them.
  *
  * The glyphs are baked into <path> data because a favicon never gets to load a
  * webfont; the outlines come straight out of Inter Bold, the face the header
@@ -33,12 +33,18 @@ export interface FaviconOptions {
     echo: string;
     /*
      * Echo layers, furthest first. Everything is in em, so the mark scales with
-     * the box. The header steps each echo 8px right and 3px up at a 24px font
-     * size; the same 1 : -0.375 slope is kept here at a shorter step, because a
-     * two-letter mark is far narrower than "LeonardKoch.com" and would be
-     * swamped by its own trail at the header's stride. Strokes run heavier than
-     * the header's 0.5/0.75/1px-at-24px for the opposite reason: at favicon
-     * sizes a true hairline outline disappears into the antialiasing.
+     * the box.
+     *
+     * The cascade runs up and to the left on the 45° diagonal the post titles
+     * use, not the header's shallow up-and-right drift. Two letters are a wide,
+     * short shape; a horizontal trail stretches it wider still and the square
+     * icon then has to shrink everything to fit. Stepping diagonally grows the
+     * drawing in both axes at once, which squares it up and buys the letters
+     * noticeably more height.
+     *
+     * Strokes run heavier than the titles' 0.5/0.75/1px-at-24px, for the
+     * opposite reason: at favicon sizes a true hairline disappears into the
+     * antialiasing.
      */
     stepX: number;
     stepY: number;
@@ -58,11 +64,39 @@ export const DEFAULTS: FaviconOptions = {
     foreground: '#1a1a1a', // --text-dark
     foregroundDarkUi: '#f8f9fb', // --blog-bg, so the mark survives a dark tab strip
     echo: '#4d94dd', // BlogHeader's titleColor
-    stepX: 0.13,
-    stepY: -0.049, // keeps the header's 1 : -0.375 slope
+    stepX: -0.13,
+    stepY: -0.13,
     strokes: [1 / 40, 1 / 30, 1 / 22],
     padding: 0.03,
+    adaptive: true,
 };
+
+const BLOG_BG = '#f8f9fb'; // --blog-bg
+
+/*
+ * Everything the manifest and iOS reference. The SVG stays transparent and
+ * adapts to a dark tab strip; the PNGs can't, so anything that gets composited
+ * onto an unknown background sits on the site's own paper colour instead.
+ *
+ * A maskable icon may be cropped to any shape, so its mark is pulled well
+ * inside the 80%-diameter safe zone — hence the much larger padding.
+ */
+const OUTPUTS = [
+    { file: 'icon-192.png', size: 192, background: null, padding: 0.03 },
+    { file: 'icon-512.png', size: 512, background: null, padding: 0.03 },
+    {
+        file: 'icon-maskable-512.png',
+        size: 512,
+        background: BLOG_BG,
+        padding: 0.16,
+    },
+    {
+        file: 'apple-touch-icon.png',
+        size: 180,
+        background: BLOG_BG,
+        padding: 0.09,
+    },
+] as const;
 
 // Everything is emitted on a 1em = 1000 unit grid to keep the path data terse.
 const SCALE = 1000;
@@ -182,20 +216,31 @@ export async function buildFavicon(
     const viewBox = round(side * SCALE);
     const pathData = scalePath(glyphPath, SCALE).toPathData(1);
 
+    /*
+     * Custom properties are what let the browser restyle the mark on a colour
+     * scheme change, but resvg resolves neither them nor the media query — it
+     * would rasterise black letters and no echoes at all. Static output gets
+     * the literal colours instead.
+     */
+    const fg = opts.adaptive ? 'var(--fg)' : opts.foreground;
+    const echo = opts.adaptive ? 'var(--echo)' : opts.echo;
+    const style = opts.adaptive
+        ? `\n<style>
+:root { --fg: ${opts.foreground}; --echo: ${opts.echo}; }
+@media (prefers-color-scheme: dark) { :root { --fg: ${opts.foregroundDarkUi}; } }
+</style>`
+        : '';
+
     const marks = [
         ...layers.map(
             (l) =>
                 `<use href="#mark" x="${round(l.dx * SCALE)}" y="${round(l.dy * SCALE)}"` +
-                ` fill="none" stroke="var(--echo)" stroke-width="${round(l.stroke * SCALE)}"/>`,
+                ` fill="none" stroke="${echo}" stroke-width="${round(l.stroke * SCALE)}"/>`,
         ),
-        `<use href="#mark" fill="var(--fg)"/>`,
+        `<use href="#mark" fill="${fg}"/>`,
     ];
 
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewBox} ${viewBox}" role="img" aria-label="${opts.text}">
-<style>
-:root { --fg: ${opts.foreground}; --echo: ${opts.echo}; }
-@media (prefers-color-scheme: dark) { :root { --fg: ${opts.foregroundDarkUi}; } }
-</style>
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewBox} ${viewBox}" role="img" aria-label="${opts.text}">${style}
 <defs><path id="mark" d="${pathData}"/></defs>
 <g transform="translate(${round(tx * SCALE)} ${round(ty * SCALE)})" stroke-linejoin="round" stroke-linecap="round">
 ${marks.map((m) => `  ${m}`).join('\n')}
@@ -206,6 +251,21 @@ ${marks.map((m) => `  ${m}`).join('\n')}
 
 if (import.meta.main) {
     const svg = await buildFavicon();
-    writeFileSync(OUT_PATH, svg);
-    console.log(`Wrote ${OUT_PATH} (${svg.length} bytes)`);
+    writeFileSync(resolve(PUBLIC_DIR, 'favicon.svg'), svg);
+    console.log(`favicon.svg (${svg.length} bytes)`);
+
+    for (const out of OUTPUTS) {
+        const source = await buildFavicon({
+            padding: out.padding,
+            adaptive: false,
+        });
+        const png = new Resvg(source, {
+            fitTo: { mode: 'width', value: out.size },
+            ...(out.background ? { background: out.background } : {}),
+        })
+            .render()
+            .asPng();
+        writeFileSync(resolve(PUBLIC_DIR, out.file), png);
+        console.log(`${out.file} (${out.size}px, ${png.length} bytes)`);
+    }
 }

@@ -23,6 +23,10 @@ export const Route = createRootRoute({
                 name: 'description',
                 content: 'Personal blog by Leonard Koch',
             },
+            {
+                name: 'theme-color',
+                content: '#f8f9fb',
+            },
         ],
         links: [
             {
@@ -46,6 +50,15 @@ export const Route = createRootRoute({
                 rel: 'icon',
                 href: '/favicon.svg',
                 type: 'image/svg+xml',
+            },
+            {
+                // iOS ignores the manifest icons for "Add to Home Screen".
+                rel: 'apple-touch-icon',
+                href: '/apple-touch-icon.png',
+            },
+            {
+                rel: 'manifest',
+                href: '/manifest.json',
             },
             {
                 rel: 'alternate',
