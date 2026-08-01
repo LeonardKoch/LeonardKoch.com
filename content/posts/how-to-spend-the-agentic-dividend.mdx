@@ -3,6 +3,7 @@ title: How to Spend the Agentic Dividend
 date: 2026-07-26
 color: '#10b981'
 description: '.'
+unpublished: true
 ---
 
 import { TeslersLawDiagram } from '@/components/mdx/diagrams/teslers-law';
@@ -12,11 +13,14 @@ But what should we do with this gain?
 
 How should we spend the agentic development dividend?
 
-I would like to make the argument that we should use it to ease the user experience by reducing its complexity.
+I think we should use it to ease the user experience by reducing its complexity.
 
+{/* revise this sentence */}
 As software craftspeople we're always battling the complexity in the problems we're solving and the products we're building to do it.
 When we really understand the problem well, iterate through many different solutions and
-find the right one we can give the user just the control they need and have everything else flow from that.<br />
+find the right one we can give the user just the control they need and have everything else flow from that.
+
+{/* revise this sentence */}
 Other times we fall short of that and that work falls on the user.
 May that be with overwrought forms, flows that don't align with the users mental model, or dozens of sliders and check-boxes that could have been much simpler.<br />
 Where things end up is often up to us and how much work we're able and willing to spend.
@@ -28,23 +32,21 @@ that tension in his [Law of the conservation of complexity](https://en.wikipedia
 A more practical perspective is that as a developer you have the opportunity to invest time and brain power,
 so your users have less complexity to deal with.
 
-<TeslersLawDiagram complexity={25} agent={false} />
+<TeslersLawDiagram complexity={70} agent={false} />
 
 Now - for the most part - that brain power has to come from us as developers.
+{/* revise this sentence */}
 Deeply understanding the complexities of the product, evaluating options to simplify it, the human perception of its different aspects
 and choosing the right ones for its users is quite subjective and thus far beyond agents without a lot of intervention.
 
-However we can be more daring and experiment more freely with these different options
+However we can be more daring and experiment more freely while exploring these different options
 when the agent is doing most of the typing.
 
-<TeslersLawDiagram complexity={25} capability={75} />
+<TeslersLawDiagram complexity={15} capability={75} />
 
 Maybe we'll get that green bar to be smaller over time, but for now this is as optimistic as I'm willing to get.
 
-We often talk about "boiling down complexity." I think that metaphor is especially apt when doing agentic development.
-The agent is the stove. It will boil things down, but you better stir in the right way at the right times,
-otherwise it's definitely going to burn.
-
+[//]: # (Shorten this and bring in more about features)
 ### Why focus on abstracting complexity?
 In a world where software is abundant, differentiation lies in specific needs filled extremely well.
 Those needs get filled by solving a problem and the more you can boil out the complexity for the user, the better.
@@ -54,3 +56,11 @@ Whereas deeply solving a problem in a manner that addresses the users need is no
 As proportion of all software it arguably becoming more rare.
 Actually solving these hard problems gives you that differentiation and will allow your product to stand out
 and win over time.
+
+# TODOS
+* Revise boiling down complexity sentence
+* Bring in build more features idea as the obvious other thing people will do
+* Explain in a more clear statement why iterations are a critical way to get to reduced complexity and
+how using an agent to go through iterations more quickly is the way to do it
+* Come up with a tangible example why this is the way to do it
+* Add closing argument
