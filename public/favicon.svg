@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1698.24 1698.24" role="img" aria-label="LK">
+<style>
+:root { --fg: #1a1a1a; --echo: #4d94dd; }
+@media (prefers-color-scheme: dark) { :root { --fg: #f8f9fb; } }
+</style>
+<defs><path id="mark" d="M528.8 0L65.9 0L65.9-727.5L214.8-727.5L214.8-123.5L528.8-123.5L528.8 0M932.6-376.5L741.2-164.6L741.2-300.3Q763.7-340.8 785.2-375Q806.6-409.2 832.5-443.6Q858.4-478 891.6-518.6L1069.8-727.5L1252-727.5L944.8-372.1L932.6-376.5M780.3 0L631.3 0L631.3-727.5L780.3-727.5L780.3-528.8L777.8-343.3L780.3-270.5L780.3 0M1259.8 0L1083.5 0L867.7-328.1L961.9-439.5"/></defs>
+<g transform="translate(-14.97 1292.64)" stroke-linejoin="round" stroke-linecap="round">
+  <use href="#mark" x="390" y="-147" fill="none" stroke="var(--echo)" stroke-width="25"/>
+  <use href="#mark" x="260" y="-98" fill="none" stroke="var(--echo)" stroke-width="33.33"/>
+  <use href="#mark" x="130" y="-49" fill="none" stroke="var(--echo)" stroke-width="45.45"/>
+  <use href="#mark" fill="var(--fg)"/>
+</g>
+</svg>
