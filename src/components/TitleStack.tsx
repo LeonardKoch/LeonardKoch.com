@@ -11,7 +11,10 @@ const LAYERS = [
     { x: -3, y: -3, stroke: 1.5, hoverX: -8, hoverY: -15 },
 ];
 
-const TEXT_CLASS = 'text-4xl md:text-5xl lg:text-6xl';
+// `text-balance` evens out the lines instead of filling the first one greedily.
+// It is deterministic for a given width and string, so all five stacked copies
+// still break at exactly the same points.
+const TEXT_CLASS = 'text-4xl md:text-5xl lg:text-6xl text-balance';
 
 // The 30px padding gives the offset layers breathing room. Layers are absolutely
 // positioned but inset by that same 30px, so they get the exact content box the
