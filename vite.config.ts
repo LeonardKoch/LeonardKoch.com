@@ -12,6 +12,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeShiki from '@shikijs/rehype';
 import { blogLightTheme } from './src/lib/shiki-theme';
 import { postsManifest } from './scripts/posts-manifest-plugin';
+import { mdxHmr } from './scripts/mdx-hmr-plugin';
 
 const config = defineConfig({
     plugins: [
@@ -58,6 +59,8 @@ const config = defineConfig({
                 ],
             }),
         },
+        // Runs on the compiled MDX, so it must follow the plugin above.
+        mdxHmr(),
         // Posts are server-rendered on demand (node-server preset). Because
         // code is highlighted at build time (rehype-shiki above) and bodies
         // are real SSR, pages ship complete HTML with no client-side flash —
