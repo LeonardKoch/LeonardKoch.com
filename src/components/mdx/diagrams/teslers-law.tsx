@@ -211,7 +211,7 @@ export function TeslersLawDiagram({
                                 transform: 'rotate(180deg)',
                             }}
                         >
-                            Agent capability
+                            Agent Loop capability
                         </label>
                     </div>
                 )}
